@@ -1,0 +1,72 @@
+{
+  "BF16": {
+    "original": {
+      "Ciencia": 5.05,
+      "Codigo": 2.65,
+      "Historia": 8.18,
+      "Enciclopedia": 3.7,
+      "Media": 4.89
+    },
+    "holdout": {
+      "Wiki": 11.56,
+      "Code": 3.76,
+      "Media": 7.66
+    }
+  },
+  "H5A_405_Controle": {
+    "original": {
+      "Ciencia": 10.11,
+      "Codigo": 2.83,
+      "Historia": 10.52,
+      "Enciclopedia": 4.39,
+      "Media": 6.96
+    },
+    "holdout": {
+      "Wiki": 14.6,
+      "Code": 4.86,
+      "Media": 9.73
+    }
+  },
+  "H5A_405_R8": {
+    "original": {
+      "Ciencia": 8.44,
+      "Codigo": 2.87,
+      "Historia": 10.51,
+      "Enciclopedia": 4.51,
+      "Media": 6.58
+    },
+    "holdout": {
+      "Wiki": 14.1,
+      "Code": 4.89,
+      "Media": 9.49
+    }
+  },
+  "H5A_405_R16": {
+    "original": {
+      "Ciencia": 8.89,
+      "Codigo": 2.86,
+      "Historia": 10.35,
+      "Enciclopedia": 4.49,
+      "Media": 6.65
+    },
+    "holdout": {
+      "Wiki": 14.07,
+      "Code": 4.87,
+      "Media": 9.47
+    }
+  },
+  "H5A_405_R32": {
+    "original": {
+      "Ciencia": 8.87,
+      "Codigo": 2.89,
+      "Historia": 9.79,
+      "Enciclopedia": 4.56,
+      "Media": 6.53
+    },
+    "holdout": {
+      "Wiki": 14.06,
+      "Code": 4.91,
+      "Media": 9.48
+    }
+  }
+}

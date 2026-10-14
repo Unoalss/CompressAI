@@ -1,0 +1,26 @@
+{
+  "model": "H5-A v2.1 Rebalanced (<850 MB)",
+  "final_mb": 848.4,
+  "delta_vs_baseline": 0.6,
+  "ppl": {
+    "Ciencia": 12.293033599853516,
+    "Codigo": 3.3544247150421143,
+    "Historia": 15.941376686096191,
+    "Enciclopedia": 7.164459705352783,
+    "Media": 9.688323676586151
+  },
+  "generation": {
+    "Capital": {
+      "text": "The capital of France is Paris.\nThe capital of France is Paris.\nThe capital of France is Paris.\nThe",
+      "tok_per_sec": 0.7983536377376226
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\n    \"\"\"Return nth Fibonacci number\"\"\"\n    if n == 0:\n        return 0\n    else:\n        return fibonacci",
+      "tok_per_sec": 0.780102961291675
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the force is equal to the mass times acceleration.\n\nA. mass\nB. mass\nC",
+      "tok_per_sec": 0.7742229325950358
+    }
+  }
+}

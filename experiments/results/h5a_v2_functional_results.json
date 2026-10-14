@@ -1,0 +1,29 @@
+{
+  "name": "H5-A v2 Funcional Adaptativo (<850MB)",
+  "size_mb": 847.8,
+  "ppl": {
+    "Ciencia": 12.482256889343262,
+    "Codigo": 3.233588218688965,
+    "Historia": 16.944486618041992,
+    "Enciclopedia": 7.254883289337158,
+    "Media": 9.978803753852844
+  },
+  "generation": {
+    "Capital": {
+      "text": "Paris. The capital of France is Paris. The capital of France is Paris. The",
+      "tok_per_sec": 0.7084061737666684
+    },
+    "Fibonacci": {
+      "text": "if n == 0:         return 0     else:         return fibonacci",
+      "tok_per_sec": 0.7348157086920918
+    },
+    "Newton": {
+      "text": "the force is equal to the mass times acceleration.  A. mass B. mass C",
+      "tok_per_sec": 0.744942581238235
+    }
+  },
+  "time_ffn": 141.37993907928467,
+  "time_attn": 26.96830415725708,
+  "time_dnet": 76.48798608779907,
+  "time_emb": 45.112409591674805
+}

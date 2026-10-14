@@ -1,0 +1,166 @@
+{
+  "model_comparison": "Qwen3.5-2B BF16 vs H5-A v2.1 Rebalanced (848.4 MB)",
+  "total_tokens_evaluated": 198,
+  "hidden_representation": {
+    "mean_cosine": 0.83355,
+    "min_cosine": 0.63353,
+    "mean_mse": 3.692666,
+    "mean_rel_err": 0.57077
+  },
+  "logit_distribution": {
+    "mean_kl_divergence": 0.60681,
+    "top1_agreement_pct": 71.72,
+    "top5_agreement_pct": 90.4,
+    "correlation_delta_h_vs_kl": 0.3861
+  },
+  "svd_spectrum_energy": {
+    "1": {
+      "singular_val": 458.3521,
+      "cum_energy_pct": 14.03,
+      "marginal_pct": 14.03
+    },
+    "2": {
+      "singular_val": 273.2854,
+      "cum_energy_pct": 19.02,
+      "marginal_pct": 4.99
+    },
+    "4": {
+      "singular_val": 219.8033,
+      "cum_energy_pct": 26.0,
+      "marginal_pct": 6.98
+    },
+    "8": {
+      "singular_val": 161.5476,
+      "cum_energy_pct": 34.04,
+      "marginal_pct": 8.04
+    },
+    "16": {
+      "singular_val": 132.5026,
+      "cum_energy_pct": 45.46,
+      "marginal_pct": 11.42
+    },
+    "32": {
+      "singular_val": 100.8839,
+      "cum_energy_pct": 59.07,
+      "marginal_pct": 13.61
+    },
+    "64": {
+      "singular_val": 76.785,
+      "cum_energy_pct": 75.35,
+      "marginal_pct": 16.28
+    },
+    "128": {
+      "singular_val": 51.5118,
+      "cum_energy_pct": 92.31,
+      "marginal_pct": 16.95
+    }
+  },
+  "top10_singular_values": [
+    458.3521,
+    273.2854,
+    237.0694,
+    219.8033,
+    191.0325,
+    172.7543,
+    167.2644,
+    161.5476,
+    158.0812,
+    156.2794
+  ],
+  "layer_by_layer_divergence": {
+    "Embedding": {
+      "cosine": 0.997,
+      "rel_err": 0.0226
+    },
+    "Camada 4": {
+      "cosine": 0.8717,
+      "rel_err": 0.4823
+    },
+    "Camada 8": {
+      "cosine": 0.8564,
+      "rel_err": 0.5069
+    },
+    "Camada 12": {
+      "cosine": 0.8402,
+      "rel_err": 0.5408
+    },
+    "Camada 16": {
+      "cosine": 0.8499,
+      "rel_err": 0.5266
+    },
+    "Camada 20": {
+      "cosine": 0.8495,
+      "rel_err": 0.5238
+    },
+    "Camada 24": {
+      "cosine": 0.8335,
+      "rel_err": 0.5708
+    }
+  },
+  "per_domain": {
+    "Ciencia": {
+      "tokens": 19,
+      "mean_cosine": 0.8663,
+      "min_cosine": 0.6927,
+      "mean_rel_err": 0.5097,
+      "mean_kl": 0.6291,
+      "top1_agreement": 63.16
+    },
+    "Codigo": {
+      "tokens": 36,
+      "mean_cosine": 0.8117,
+      "min_cosine": 0.6703,
+      "mean_rel_err": 0.6194,
+      "mean_kl": 0.3806,
+      "top1_agreement": 88.89
+    },
+    "Historia": {
+      "tokens": 19,
+      "mean_cosine": 0.8763,
+      "min_cosine": 0.824,
+      "mean_rel_err": 0.4949,
+      "mean_kl": 0.5023,
+      "top1_agreement": 52.63
+    },
+    "Enciclopedia": {
+      "tokens": 21,
+      "mean_cosine": 0.858,
+      "min_cosine": 0.7847,
+      "mean_rel_err": 0.5306,
+      "mean_kl": 0.4846,
+      "top1_agreement": 76.19
+    },
+    "Logica": {
+      "tokens": 24,
+      "mean_cosine": 0.8716,
+      "min_cosine": 0.7903,
+      "mean_rel_err": 0.5035,
+      "mean_kl": 0.4842,
+      "top1_agreement": 70.83
+    },
+    "Matematica": {
+      "tokens": 40,
+      "mean_cosine": 0.8,
+      "min_cosine": 0.6815,
+      "mean_rel_err": 0.6377,
+      "mean_kl": 0.6653,
+      "top1_agreement": 77.5
+    },
+    "Linguistica": {
+      "tokens": 18,
+      "mean_cosine": 0.8519,
+      "min_cosine": 0.7023,
+      "mean_rel_err": 0.529,
+      "mean_kl": 0.8445,
+      "top1_agreement": 66.67
+    },
+    "Filosofia": {
+      "tokens": 21,
+      "mean_cosine": 0.783,
+      "min_cosine": 0.6335,
+      "mean_rel_err": 0.6368,
+      "mean_kl": 1.0161,
+      "top1_agreement": 57.14
+    }
+  }
+}

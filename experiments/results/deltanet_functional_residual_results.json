@@ -1,0 +1,185 @@
+{
+  "sweep_func_levels": [
+    {
+      "prot_level": "0.0%",
+      "final_mb": 847.8,
+      "extra_mb": 0.0,
+      "effective_bpw": 3.127,
+      "ppl_codigo": 3.23,
+      "ppl_enciclopedia": 7.25,
+      "ppl_ciencia": 12.48,
+      "ppl_historia": 16.94,
+      "ppl_media": 9.98,
+      "ganho_ppl": 0.0,
+      "eficiencia": 0.0
+    },
+    {
+      "prot_level": "0.5%",
+      "final_mb": 848.58,
+      "extra_mb": 0.78,
+      "effective_bpw": 3.13,
+      "ppl_codigo": 3.3,
+      "ppl_enciclopedia": 7.21,
+      "ppl_ciencia": 12.7,
+      "ppl_historia": 16.76,
+      "ppl_media": 10.0,
+      "ganho_ppl": -0.016,
+      "eficiencia": -0.0212
+    },
+    {
+      "prot_level": "1.0%",
+      "final_mb": 849.35,
+      "extra_mb": 1.55,
+      "effective_bpw": 3.133,
+      "ppl_codigo": 3.35,
+      "ppl_enciclopedia": 7.26,
+      "ppl_ciencia": 12.67,
+      "ppl_historia": 16.57,
+      "ppl_media": 9.97,
+      "ganho_ppl": 0.013,
+      "eficiencia": 0.0086
+    },
+    {
+      "prot_level": "2.0%",
+      "final_mb": 850.91,
+      "extra_mb": 3.11,
+      "effective_bpw": 3.139,
+      "ppl_codigo": 3.36,
+      "ppl_enciclopedia": 7.25,
+      "ppl_ciencia": 12.94,
+      "ppl_historia": 16.87,
+      "ppl_media": 10.1,
+      "ganho_ppl": -0.125,
+      "eficiencia": -0.0402
+    },
+    {
+      "prot_level": "4.0%",
+      "final_mb": 854.02,
+      "extra_mb": 6.22,
+      "effective_bpw": 3.15,
+      "ppl_codigo": 3.34,
+      "ppl_enciclopedia": 7.34,
+      "ppl_ciencia": 12.98,
+      "ppl_historia": 16.49,
+      "ppl_media": 10.04,
+      "ganho_ppl": -0.06,
+      "eficiencia": -0.0097
+    }
+  ],
+  "dnet_rank8": {
+    "final_mb": 848.8,
+    "extra_mb": 1.0,
+    "ppl": {
+      "Ciencia": 12.195591926574707,
+      "Codigo": 3.23474383354187,
+      "Historia": 16.39815330505371,
+      "Enciclopedia": 7.363525867462158,
+      "Media": 9.798003733158112
+    },
+    "ganho": 0.181
+  },
+  "combinations": [
+    {
+      "config": "1. v2 Baseline",
+      "mb": 847.8,
+      "delta_mb": 0.0,
+      "ppl_media": 9.98,
+      "ppl_codigo": 3.23,
+      "ppl_encic": 7.25,
+      "ppl_ciencia": 12.48,
+      "ppl_hist": 16.94,
+      "ganho": 0.0
+    },
+    {
+      "config": "2. v2 + FFN Rank 8",
+      "mb": 850.8,
+      "delta_mb": 3.0,
+      "ppl_media": 9.7,
+      "ppl_codigo": 3.37,
+      "ppl_encic": 6.91,
+      "ppl_ciencia": 12.15,
+      "ppl_hist": 16.37,
+      "ganho": 0.28
+    },
+    {
+      "config": "3. v2 + DeltaNet Rank 8",
+      "mb": 848.8,
+      "delta_mb": 1.0,
+      "ppl_media": 9.8,
+      "ppl_codigo": 3.23,
+      "ppl_encic": 7.36,
+      "ppl_ciencia": 12.2,
+      "ppl_hist": 16.4,
+      "ganho": 0.18
+    },
+    {
+      "config": "4. v2 + DeltaNet Func 1%",
+      "mb": 849.3,
+      "delta_mb": 1.5,
+      "ppl_media": 9.97,
+      "ppl_codigo": 3.35,
+      "ppl_encic": 7.26,
+      "ppl_ciencia": 12.67,
+      "ppl_hist": 16.57,
+      "ganho": 0.01
+    },
+    {
+      "config": "5. v2 + DeltaNet Func 2%",
+      "mb": 850.8,
+      "delta_mb": 3.0,
+      "ppl_media": 10.1,
+      "ppl_codigo": 3.36,
+      "ppl_encic": 7.25,
+      "ppl_ciencia": 12.94,
+      "ppl_hist": 16.87,
+      "ganho": -0.12
+    },
+    {
+      "config": "6. v2 + DeltaNet R8 + FFN R8",
+      "mb": 851.8,
+      "delta_mb": 4.0,
+      "ppl_media": 9.65,
+      "ppl_codigo": 3.35,
+      "ppl_encic": 7.09,
+      "ppl_ciencia": 12.15,
+      "ppl_hist": 15.99,
+      "ganho": 0.33
+    },
+    {
+      "config": "7. v2 + DeltaNet F1% + FFN R8",
+      "mb": 852.3,
+      "delta_mb": 4.5,
+      "ppl_media": 9.8,
+      "ppl_codigo": 3.46,
+      "ppl_encic": 6.92,
+      "ppl_ciencia": 12.77,
+      "ppl_hist": 16.04,
+      "ganho": 0.18
+    }
+  ],
+  "best_config": {
+    "config": "6. v2 + DeltaNet R8 + FFN R8",
+    "mb": 851.8,
+    "delta_mb": 4.0,
+    "ppl_media": 9.65,
+    "ppl_codigo": 3.35,
+    "ppl_encic": 7.09,
+    "ppl_ciencia": 12.15,
+    "ppl_hist": 15.99,
+    "ganho": 0.33
+  },
+  "generation": {
+    "Capital": {
+      "text": "Paris.  Is this statement true or false?  The capital of France is Paris.  Is",
+      "tok_per_sec": 0.61999210476439
+    },
+    "Fibonacci": {
+      "text": "if n == 0:         return 0     else:         return fibonacci",
+      "tok_per_sec": 0.6029465012748361
+    },
+    "Newton": {
+      "text": "the force is equal to the mass times acceleration.  <think> Here is the thinking process that leads",
+      "tok_per_sec": 0.5843318399285032
+    }
+  }
+}

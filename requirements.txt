@@ -1,0 +1,32 @@
+# ==============================================================================
+# VQ2 & LEGION AI - Requirements
+# ==============================================================================
+
+# Core Deep Learning Framework
+torch>=2.1.0
+transformers>=4.40.0
+accelerate>=0.28.0
+safetensors>=0.4.0
+
+# Numerical & Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+pyarrow>=14.0.0
+
+# Vector Quantization & Entropy Coding
+constriction>=0.4.0
+
+# Fast Triton Kernels (Linux or Windows via triton-windows)
+# Note: For Windows, install `pip install triton-windows`
+triton>=2.1.0; sys_platform != 'win32'
+triton-windows>=3.0.0; sys_platform == 'win32'
+
+# System Monitoring & Telemetry
+psutil>=5.9.0
+
+# Optional / Development Tools
+tqdm>=4.66.0
+rich>=13.0.0
+einops>=0.7.0
+sentencepiece>=0.2.0
+huggingface_hub>=0.20.0

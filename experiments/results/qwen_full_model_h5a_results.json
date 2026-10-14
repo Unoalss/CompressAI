@@ -1,0 +1,52 @@
+{
+  "exp_a_ppl": {
+    "Ciencia": 18.849470138549805,
+    "Codigo": 3.4959542751312256,
+    "Historia": 11.564412117004395,
+    "Enciclopedia": 8.442120552062988,
+    "Media": 10.587989270687103
+  },
+  "exp_b_ppl": {
+    "Ciencia": 25.129858016967773,
+    "Codigo": 8.2431640625,
+    "Historia": 22.991596221923828,
+    "Enciclopedia": 11.737872123718262,
+    "Media": 17.025622606277466
+  },
+  "exp_a_gen": {
+    "Capital": {
+      "text": "The capital of France is Paris, which is located in the ______ region.\\nA.\\nB.\\n",
+      "uniq": 0.72,
+      "tok_per_sec": 0.7876872633459134
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6666666666666666,
+      "tok_per_sec": 0.7349223296929777
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the force acting on an object is equal",
+      "uniq": 0.7142857142857143,
+      "tok_per_sec": 0.7003314327909548
+    }
+  },
+  "exp_b_gen": {
+    "Capital": {
+      "text": "The capital of France is Paris, which is the capital of France.\\nThe capital of ",
+      "uniq": 0.44,
+      "tok_per_sec": 0.6857213297419225
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6363636363636364,
+      "tok_per_sec": 0.7475074243190668
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the force of motion is equal to the fo",
+      "uniq": 0.5714285714285714,
+      "tok_per_sec": 0.7538805430569709
+    }
+  },
+  "time_quant_a": 161.4914517402649,
+  "time_quant_b": 82.7619845867157
+}

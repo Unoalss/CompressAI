@@ -1,0 +1,72 @@
+[
+  {
+    "rank": 0,
+    "final_mb": 847.8,
+    "extra_mb": 0.0,
+    "effective_bpw": 3.127,
+    "ppl_codigo": 3.23,
+    "ppl_enciclopedia": 7.25,
+    "ppl_ciencia": 12.48,
+    "ppl_historia": 16.94,
+    "ppl_media": 9.98,
+    "ganho_ppl": 0.0,
+    "eficiencia_ppl_mb": 0.0,
+    "eval_time_s": 18.1
+  },
+  {
+    "rank": 8,
+    "final_mb": 850.8,
+    "extra_mb": 3.0,
+    "effective_bpw": 3.138,
+    "ppl_codigo": 3.33,
+    "ppl_enciclopedia": 6.95,
+    "ppl_ciencia": 11.87,
+    "ppl_historia": 16.05,
+    "ppl_media": 9.55,
+    "ganho_ppl": 0.427,
+    "eficiencia_ppl_mb": 0.1425,
+    "eval_time_s": 19.0
+  },
+  {
+    "rank": 16,
+    "final_mb": 853.8,
+    "extra_mb": 6.0,
+    "effective_bpw": 3.15,
+    "ppl_codigo": 3.33,
+    "ppl_enciclopedia": 6.97,
+    "ppl_ciencia": 11.81,
+    "ppl_historia": 16.23,
+    "ppl_media": 9.58,
+    "ganho_ppl": 0.395,
+    "eficiencia_ppl_mb": 0.0659,
+    "eval_time_s": 18.8
+  },
+  {
+    "rank": 32,
+    "final_mb": 859.8,
+    "extra_mb": 12.0,
+    "effective_bpw": 3.172,
+    "ppl_codigo": 3.34,
+    "ppl_enciclopedia": 6.95,
+    "ppl_ciencia": 11.87,
+    "ppl_historia": 15.85,
+    "ppl_media": 9.5,
+    "ganho_ppl": 0.474,
+    "eficiencia_ppl_mb": 0.0395,
+    "eval_time_s": 19.0
+  },
+  {
+    "rank": 64,
+    "final_mb": 871.8,
+    "extra_mb": 24.0,
+    "effective_bpw": 3.216,
+    "ppl_codigo": 3.29,
+    "ppl_enciclopedia": 7.03,
+    "ppl_ciencia": 11.81,
+    "ppl_historia": 15.95,
+    "ppl_media": 9.52,
+    "ganho_ppl": 0.458,
+    "eficiencia_ppl_mb": 0.0191,
+    "eval_time_s": 19.1
+  }
+]

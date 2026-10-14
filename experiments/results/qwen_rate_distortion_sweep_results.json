@@ -1,0 +1,59 @@
+{
+  "ppl_bf16": {
+    "Ciencia": 5.050857067108154,
+    "Codigo": 2.6484928131103516,
+    "Historia": 8.183316230773926,
+    "Enciclopedia": 3.700718402862549,
+    "Media": 4.895846128463745
+  },
+  "ppl_q4_ffn": {
+    "Ciencia": 5.319762706756592,
+    "Codigo": 2.708397626876831,
+    "Historia": 8.02562427520752,
+    "Enciclopedia": 3.9113712310791016,
+    "Media": 4.991288959980011
+  },
+  "ppl_h5a_305": {
+    "Ciencia": 14.103915214538574,
+    "Codigo": 3.2152767181396484,
+    "Historia": 10.808964729309082,
+    "Enciclopedia": 7.489380836486816,
+    "Media": 8.90438437461853
+  },
+  "ppl_h5a_405": {
+    "Ciencia": 10.110343933105469,
+    "Codigo": 2.8319990634918213,
+    "Historia": 10.520421028137207,
+    "Enciclopedia": 4.388176918029785,
+    "Media": 6.962735235691071
+  },
+  "gen_q4_ffn": {
+    "Capital": {
+      "text": "The capital of France is Paris.\\nA. True\\nB. False\\n\\n<think>\\nThinking Process:",
+      "uniq": 0.76
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n <= 0:\\n      ",
+      "uniq": 0.696969696969697
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the net force acting on an object is e",
+      "uniq": 0.8571428571428571
+    }
+  },
+  "gen_h5a_405": {
+    "Capital": {
+      "text": "The capital of France is Paris.\\n\\nThe capital of the United States is Washingto",
+      "uniq": 0.52
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6666666666666666
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the net force acting on an object is e",
+      "uniq": 0.8571428571428571
+    }
+  },
+  "quant_time_405_sec": 155.12533807754517
+}

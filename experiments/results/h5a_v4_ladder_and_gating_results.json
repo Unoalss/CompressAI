@@ -1,0 +1,125 @@
+{
+  "baseline": {
+    "train": {
+      "kl": 0.7496,
+      "top1": 68.01,
+      "top5": 91.82,
+      "cosine": 77.96
+    },
+    "holdout": {
+      "kl": 1.0264,
+      "top1": 57.74,
+      "top5": 84.18,
+      "cosine": 76.68
+    },
+    "ppl": {
+      "Ciencia": 12.29,
+      "Codigo": 3.35,
+      "Historia": 15.94,
+      "Enciclopedia": 7.16,
+      "Media": 9.69
+    }
+  },
+  "experiments": {
+    "Control_V3B_R16": {
+      "name": "Controle V3-B (L24 Rank 16)",
+      "size_kb": 128.0,
+      "train": {
+        "kl": 0.0912,
+        "top1": 97.92,
+        "top5": 99.7,
+        "cosine": 76.23
+      },
+      "holdout": {
+        "kl": 1.1537,
+        "top1": 56.4,
+        "top5": 83.16,
+        "cosine": 75.17
+      },
+      "gap_kl": 1.0625,
+      "top1_retention": 57.6,
+      "ppl": {
+        "Ciencia": 9.4,
+        "Codigo": 3.31,
+        "Historia": 16.07,
+        "Enciclopedia": 7.74,
+        "Media": 9.13
+      }
+    },
+    "Control_V3Gated_R16": {
+      "name": "Controle V3-Gated (L24 Rank 16 + Gate)",
+      "size_kb": 132.0,
+      "train": {
+        "kl": 0.7496,
+        "top1": 68.01,
+        "top5": 91.82,
+        "cosine": 77.96
+      },
+      "holdout": {
+        "kl": 1.0263,
+        "top1": 57.74,
+        "top5": 84.18,
+        "cosine": 76.68
+      },
+      "gap_kl": 0.2767,
+      "top1_retention": 84.9,
+      "ppl": {
+        "Ciencia": 12.29,
+        "Codigo": 3.35,
+        "Historia": 15.94,
+        "Enciclopedia": 7.16,
+        "Media": 9.69
+      }
+    },
+    "H5A_v4_Ladder": {
+      "name": "H5-A v4-Ladder (L12 R8 + L24 R8)",
+      "size_kb": 128.0,
+      "train": {
+        "kl": 0.0997,
+        "top1": 97.32,
+        "top5": 99.55,
+        "cosine": 77.32
+      },
+      "holdout": {
+        "kl": 1.1538,
+        "top1": 56.06,
+        "top5": 82.66,
+        "cosine": 75.79
+      },
+      "gap_kl": 1.0541,
+      "top1_retention": 57.6,
+      "ppl": {
+        "Ciencia": 10.97,
+        "Codigo": 3.27,
+        "Historia": 14.06,
+        "Enciclopedia": 6.7,
+        "Media": 8.75
+      }
+    },
+    "H5A_v4_Ladder_Gated": {
+      "name": "H5-A v4-Ladder-Gated (L12 R8-G + L24 R8-G)",
+      "size_kb": 136.0,
+      "train": {
+        "kl": 0.1237,
+        "top1": 96.43,
+        "top5": 99.55,
+        "cosine": 77.28
+      },
+      "holdout": {
+        "kl": 1.1403,
+        "top1": 54.38,
+        "top5": 83.67,
+        "cosine": 76.02
+      },
+      "gap_kl": 1.0166,
+      "top1_retention": 56.39,
+      "ppl": {
+        "Ciencia": 9.46,
+        "Codigo": 3.31,
+        "Historia": 15.29,
+        "Enciclopedia": 6.26,
+        "Media": 8.58
+      }
+    }
+  }
+}

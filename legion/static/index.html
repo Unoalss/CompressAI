@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGION AI - A Legião dos 10.240 Especialistas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar / Telemetria -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="brand-title">LEGION</h1>
+                    <span class="brand-subtitle">MoE Paged Engine</span>
+                </div>
+            </div>
+
+            <div class="status-card" id="hardwareCard">
+                <div class="card-header">
+                    <span class="card-title">FONTE DO MODELO</span>
+                    <span class="pulse-dot active" id="pulseDot"></span>
+                </div>
+                <div class="drive-badge" id="driveBadge">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="6" y="2" width="12" height="20" rx="2"></rect>
+                        <line x1="10" y1="6" x2="14" y2="6"></line>
+                        <line x1="10" y1="10" x2="14" y2="10"></line>
+                    </svg>
+                    <span id="driveLabel">Pendrive USB (D:\)</span>
+                </div>
+                <div class="stat-row">
+                    <span>Especialistas MoE:</span>
+                    <strong class="stat-highlight" id="totalExperts">10.240</strong>
+                </div>
+                <div class="stat-row">
+                    <span>Ativos por Token:</span>
+                    <strong style="color: var(--neon-cyan);" id="activePerToken">320 especialistas (Top-8 Nativo)</strong>
+                </div>
+                <div class="stat-row">
+                    <span>Mobilizados na Sessão:</span>
+                    <strong class="stat-highlight" id="distinctExperts">320 de 10.240</strong>
+                </div>
+                <div class="stat-row">
+                    <span>Pool de Cache VRAM:</span>
+                    <strong id="cachePoolText">3.840 experts (Zero-Copy)</strong>
+                </div>
+            </div>
+
+            <!-- Medidor de Cache e VRAM -->
+            <div class="status-card">
+                <div class="card-header">
+                    <span class="card-title">TELEMETRIA DE HARDWARE</span>
+                    <span class="mini-badge" style="color: var(--neon-green);">-85% VRAM</span>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-header">
+                        <span>Taxa de Cache Hit</span>
+                        <span id="hitRateText">85.0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="hitRateFill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="metric-grid">
+                    <div class="mini-stat">
+                        <span class="mini-label">VRAM Alocada</span>
+                        <span class="mini-value" id="vramText">7.6 GB</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-label">Velocidade</span>
+                        <span class="mini-value" id="speedText">-- tok/s</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-label">Latência/Passo</span>
+                        <span class="mini-value" id="stepMsText">-- ms</span>
+                    </div>
+                    <div class="mini-stat">
+                        <span class="mini-label">Economia vs FP16</span>
+                        <span class="mini-value" style="color: var(--neon-green);">-85%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Radar da Legião (MoE Live Visualizer) -->
+            <div class="status-card mo-radar">
+                <div class="card-header">
+                    <span class="card-title">RADAR DA LEGIÃO (MoE)</span>
+                    <span class="mini-badge">40x256</span>
+                </div>
+                <p class="radar-desc">Despacho dinâmico de 320 especialistas por token:</p>
+                <div class="experts-matrix" id="expertsMatrix">
+                    <!-- Gerado dinamicamente via JS -->
+                </div>
+            </div>
+
+            <div class="sidebar-footer">
+                <span>CompressAI • VQ2 Quantum Studio</span>
+            </div>
+        </aside>
+
+        <!-- Chat Container -->
+        <main class="chat-container">
+            <header class="chat-header">
+                <div>
+                    <h2 class="chat-heading">Chatbot LEGION</h2>
+                    <p class="chat-desc">"Pois somos muitos" — 10.240 especialistas compactados respondendo diretamente do seu pendrive USB.</p>
+                </div>
+                <button class="clear-btn" id="clearBtn" title="Limpar conversa">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                </button>
+            </header>
+
+            <div class="messages-area" id="messagesArea">
+                <!-- Mensagem de boas-vindas inicial -->
+                <div class="message assistant-message">
+                    <div class="avatar">L</div>
+                    <div class="message-content">
+                        <p><strong>Olá! Eu sou o LEGION.</strong></p>
+                        <p>Sou o motor do compressAI rodando em modo paginado <code>.vq2m</code> diretamente a partir do pendrive. Minhas 40 camadas contêm 10.240 especialistas neurais em repouso no armazenamento, despertando sob demanda para responder às suas perguntas com alto nível de inteligência e consumo mínimo de memória.</p>
+                        <div class="prompt-suggestions">
+                            <button class="suggestion-chip" onclick="usePrompt('Explique detalhadamente como o MoE e a quantização VQ2 permitem que você rode de um pendrive.')">💡 Como você roda do pendrive?</button>
+                            <button class="suggestion-chip" onclick="usePrompt('Escreva uma função em Python para calcular números de Fibonacci com memoization e explique o algoritmo.')">🐍 Código em Python</button>
+                            <button class="suggestion-chip" onclick="usePrompt('Quais são as três leis da robótica de Isaac Asimov e suas implicações éticas?')">🤖 Leis de Asimov</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Bar -->
+            <footer class="input-container">
+                <form id="chatForm" class="chat-form">
+                    <textarea 
+                        id="userInput" 
+                        class="chat-input" 
+                        placeholder="Digite sua pergunta para a legião de especialistas... (Shift+Enter para nova linha)"
+                        rows="1"
+                    ></textarea>
+                    <button type="submit" id="sendBtn" class="send-button" title="Enviar mensagem">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+                <div class="input-footer">
+                    <span>Leitura sob demanda via <code>mmap</code> • Memória ativa &lt; 2.5 GB</span>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+</html>

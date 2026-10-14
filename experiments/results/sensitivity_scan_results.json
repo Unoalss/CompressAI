@@ -1,0 +1,146 @@
+[
+  {
+    "label": "L0 DeltaNet in_proj_qkv",
+    "layer": 0,
+    "module": "linear_attn",
+    "weight": "in_proj_qkv",
+    "delta_loss": -0.013048529624938965,
+    "new_ppl": 5.822510242462158,
+    "tier": "BAIXA (2.5 BPW)"
+  },
+  {
+    "label": "L0 DeltaNet in_proj_z",
+    "layer": 0,
+    "module": "linear_attn",
+    "weight": "in_proj_z",
+    "delta_loss": 0.005647420883178711,
+    "new_ppl": 5.93239164352417,
+    "tier": "M\u00c9DIA (3.05 BPW)"
+  },
+  {
+    "label": "L0 DeltaNet out_proj",
+    "layer": 0,
+    "module": "linear_attn",
+    "weight": "out_proj",
+    "delta_loss": 0.009494304656982422,
+    "new_ppl": 5.955256938934326,
+    "tier": "M\u00c9DIA (3.05 BPW)"
+  },
+  {
+    "label": "L0 FFN gate_proj",
+    "layer": 0,
+    "module": "mlp",
+    "weight": "gate_proj",
+    "delta_loss": 0.005228519439697266,
+    "new_ppl": 5.929907321929932,
+    "tier": "M\u00c9DIA (3.05 BPW)"
+  },
+  {
+    "label": "L0 FFN up_proj",
+    "layer": 0,
+    "module": "mlp",
+    "weight": "up_proj",
+    "delta_loss": 0.006322145462036133,
+    "new_ppl": 5.936395645141602,
+    "tier": "M\u00c9DIA (3.05 BPW)"
+  },
+  {
+    "label": "L0 FFN down_proj",
+    "layer": 0,
+    "module": "mlp",
+    "weight": "down_proj",
+    "delta_loss": 0.02897036075592041,
+    "new_ppl": 6.072378635406494,
+    "tier": "ALTA (4.0 BPW)"
+  },
+  {
+    "label": "L3 Attention q_proj",
+    "layer": 3,
+    "module": "self_attn",
+    "weight": "q_proj",
+    "delta_loss": -0.01845574378967285,
+    "new_ppl": 5.791111946105957,
+    "tier": "BAIXA (2.5 BPW)"
+  },
+  {
+    "label": "L3 Attention o_proj",
+    "layer": 3,
+    "module": "self_attn",
+    "weight": "o_proj",
+    "delta_loss": 0.023990154266357422,
+    "new_ppl": 6.042212009429932,
+    "tier": "ALTA (4.0 BPW)"
+  },
+  {
+    "label": "L3 FFN down_proj",
+    "layer": 3,
+    "module": "mlp",
+    "weight": "down_proj",
+    "delta_loss": 0.02547597885131836,
+    "new_ppl": 6.051196575164795,
+    "tier": "ALTA (4.0 BPW)"
+  },
+  {
+    "label": "L11 Attention q_proj",
+    "layer": 11,
+    "module": "self_attn",
+    "weight": "q_proj",
+    "delta_loss": 0.01741814613342285,
+    "new_ppl": 6.002633094787598,
+    "tier": "ALTA (4.0 BPW)"
+  },
+  {
+    "label": "L11 FFN down_proj",
+    "layer": 11,
+    "module": "mlp",
+    "weight": "down_proj",
+    "delta_loss": 0.025706768035888672,
+    "new_ppl": 6.052593231201172,
+    "tier": "ALTA (4.0 BPW)"
+  },
+  {
+    "label": "L12 DeltaNet in_proj_qkv",
+    "layer": 12,
+    "module": "linear_attn",
+    "weight": "in_proj_qkv",
+    "delta_loss": -0.00689697265625,
+    "new_ppl": 5.858438491821289,
+    "tier": "BAIXA (2.5 BPW)"
+  },
+  {
+    "label": "L12 FFN down_proj",
+    "layer": 12,
+    "module": "mlp",
+    "weight": "down_proj",
+    "delta_loss": 0.0037412643432617188,
+    "new_ppl": 5.9210944175720215,
+    "tier": "BAIXA (2.5 BPW)"
+  },
+  {
+    "label": "L23 Attention q_proj",
+    "layer": 23,
+    "module": "self_attn",
+    "weight": "q_proj",
+    "delta_loss": 0.004293203353881836,
+    "new_ppl": 5.924363613128662,
+    "tier": "BAIXA (2.5 BPW)"
+  },
+  {
+    "label": "L23 Attention o_proj",
+    "layer": 23,
+    "module": "self_attn",
+    "weight": "o_proj",
+    "delta_loss": -0.005307197570800781,
+    "new_ppl": 5.8677592277526855,
+    "tier": "BAIXA (2.5 BPW)"
+  },
+  {
+    "label": "L23 FFN down_proj",
+    "layer": 23,
+    "module": "mlp",
+    "weight": "down_proj",
+    "delta_loss": 0.0161362886428833,
+    "new_ppl": 5.994943141937256,
+    "tier": "ALTA (4.0 BPW)"
+  }
+]

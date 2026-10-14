@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Flappy Bird - Qwen3.8-35B Edition</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #12131c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+    h1 {
+      margin-bottom: 12px;
+      font-size: 1.6rem;
+      color: #00f2fe;
+      text-shadow: 0 0 15px rgba(0,242,254,0.5);
+    }
+    canvas {
+      background: #70c5ce;
+      border: 3px solid #00f2fe;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+      cursor: pointer;
+    }
+    .instructions {
+      margin-top: 14px;
+      font-size: 0.95rem;
+      color: #a0aec0;
+    }
+    kbd {
+      background: rgba(255,255,255,0.15);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #00f2fe;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flappy Bird — Qwen3.8-35B</h1>
+  <canvas id="gameCanvas" width="360" height="560"></canvas>
+  <p class="instructions">Pressione <kbd>Espaço</kbd> ou dê um <kbd>Clique</kbd> na tela para voar!</p>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let bird = { x: 60, y: 240, r: 14, vy: 0, gravity: 0.28, jump: -5.4 };
+    let pipes = [];
+    let score = 0;
+    let bestScore = 0;
+    let gameOver = false;
+    let started = false;
+    let frame = 0;
+
+    function resetGame() {
+      bird.y = 240;
+      bird.vy = 0;
+      pipes = [];
+      score = 0;
+      gameOver = false;
+      started = true;
+      frame = 0;
+    }
+
+    function flap() {
+      if (!started || gameOver) {
+        resetGame();
+      } else {
+        bird.vy = bird.jump;
+      }
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        flap();
+      }
+    });
+    canvas.addEventListener('mousedown', flap);
+    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); flap(); });
+
+    function loop() {
+      frame++;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Fundo e Chão
+      ctx.fillStyle = '#70c5ce';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#ded895';
+      ctx.fillRect(0, canvas.height - 40, canvas.width, 40);
+      ctx.fillStyle = '#73bf2e';
+      ctx.fillRect(0, canvas.height - 46, canvas.width, 6);
+
+      if (started && !gameOver) {
+        bird.vy += bird.gravity;
+        bird.y += bird.vy;
+
+        if (bird.y + bird.r >= canvas.height - 46) {
+          bird.y = canvas.height - 46 - bird.r;
+          gameOver = true;
+        }
+        if (bird.y - bird.r <= 0) bird.y = bird.r;
+
+        if (frame % 100 === 0) {
+          const gap = 125;
+          const minH = 60;
+          const maxH = canvas.height - 46 - gap - minH;
+          const topH = Math.floor(Math.random() * (maxH - minH + 1)) + minH;
+          pipes.push({ x: canvas.width, top: topH, bottom: topH + gap, passed: false });
+        }
+
+        for (let i = pipes.length - 1; i >= 0; i--) {
+          const p = pipes[i];
+          p.x -= 2.2;
+
+          ctx.fillStyle = '#73bf2e';
+          ctx.fillRect(p.x, 0, 52, p.top);
+          ctx.strokeStyle = '#558022';
+          ctx.lineWidth = 3;
+          ctx.strokeRect(p.x, 0, 52, p.top);
+
+          const bottomH = canvas.height - 46 - p.bottom;
+          ctx.fillRect(p.x, p.bottom, 52, bottomH);
+          ctx.strokeRect(p.x, p.bottom, 52, bottomH);
+
+          if (
+            bird.x + bird.r > p.x && bird.x - bird.r < p.x + 52 &&
+            (bird.y - bird.r < p.top || bird.y + bird.r > p.bottom)
+          ) {
+            gameOver = true;
+          }
+
+          if (!p.passed && p.x + 52 < bird.x) {
+            p.passed = true;
+            score++;
+            if (score > bestScore) bestScore = score;
+          }
+
+          if (p.x + 52 < 0) pipes.splice(i, 1);
+        }
+      }
+
+      // Desenha o Pássaro
+      ctx.save();
+      ctx.translate(bird.x, bird.y);
+      let angle = Math.min(Math.PI / 4, Math.max(-Math.PI / 4, (bird.vy * 4) * Math.PI / 180));
+      ctx.rotate(angle);
+
+      ctx.fillStyle = '#f7dc5f';
+      ctx.beginPath();
+      ctx.arc(0, 0, bird.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#d69e2e';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#fff';
+      ctx.beginPath();
+      ctx.arc(5, -4, 4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#000';
+      ctx.beginPath();
+      ctx.arc(6, -4, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#e53e3e';
+      ctx.beginPath();
+      ctx.moveTo(10, 0);
+      ctx.lineTo(18, 2);
+      ctx.lineTo(10, 6);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+
+      if (started && !gameOver) {
+        ctx.fillStyle = '#fff';
+        ctx.font = 'bold 32px "Segoe UI", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(score, canvas.width / 2, 60);
+      }
+
+      if (!started) {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 24px sans-serif';
+        ctx.fillText('Clique ou Espaço', canvas.width / 2, canvas.height / 2 - 10);
+        ctx.font = '16px sans-serif';
+        ctx.fillText('para iniciar o jogo', canvas.width / 2, canvas.height / 2 + 20);
+      }
+
+      if (gameOver) {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.65)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#e53e3e';
+        ctx.textAlign = 'center';
+        ctx.font = 'bold 30px sans-serif';
+        ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2 - 50);
+
+        ctx.fillStyle = '#fff';
+        ctx.font = '20px sans-serif';
+        ctx.fillText('Pontos: ' + score, canvas.width / 2, canvas.height / 2 - 10);
+        ctx.fillText('Melhor: ' + bestScore, canvas.width / 2, canvas.height / 2 + 20);
+
+        ctx.fillStyle = '#00f2fe';
+        ctx.font = '15px sans-serif';
+        ctx.fillText('Pressione Espaço para reiniciar', canvas.width / 2, canvas.height / 2 + 65);
+      }
+
+      requestAnimationFrame(loop);
+    }
+
+    loop();
+  </script>
+</body>
+</html>

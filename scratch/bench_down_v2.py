@@ -1,0 +1,87 @@
+import sys, time
+sys.path.insert(0, r"e:\compressAI")
+import torch
+import triton
+import triton.language as tl
+from vq2 import vq
+
+DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+s1 = torch.load("e:/compressAI/vq2_35b_out/quant_model-00001-of-00021.safetensors.pt", weights_only=False, map_location="cpu")["quant"]
+cbs_data = torch.load("e:/compressAI/vq2_out/codebooks.pt", weights_only=False)
+cb16 = cbs_data["16"].to(device=DEVICE, dtype=torch.bfloat16)
+
+q_down = s1["model.language_model.layers.0.mlp.experts.down_proj"]
+down_idx = q_down["idx"][0].view(256, 2048, 64).to(DEVICE)
+down_scale = q_down["scale"].view(256, 2048).to(device=DEVICE, dtype=torch.bfloat16)
+
+topk_ids = torch.tensor([5, 12, 47, 88, 120, 155, 201, 240], device=DEVICE, dtype=torch.int32)
+act_r = torch.randn(8, 512, device=DEVICE, dtype=torch.bfloat16)
+y_down = torch.empty((8, 2048), device=DEVICE, dtype=torch.bfloat16)
+
+from vq2.kernels import _parallel_moe_down_kernel
+
+torch.cuda.synchronize()
+t0 = time.perf_counter()
+N = 500
+for _ in range(N):
+    grid = (8, 2048 // 16)
+    _parallel_moe_down_kernel[grid](
+        act_r, topk_ids, down_idx, cb16, down_scale, y_down,
+        OUT=2048, NG=64, rs=1.0, BR=16, BG=64, num_warps=4
+    )
+torch.cuda.synchronize()
+dt_orig = (time.perf_counter() - t0) / N * 1000
+print(f"Down Original BR=16: {dt_orig:.4f} ms ({dt_orig*1000:.1f} us)")
+
+@triton.jit
+def _opt_down_v2(
+    act_ptr, e_ids_ptr, i0_ptr, cb0_ptr, sc_ptr, y_ptr,
+    OUT: tl.constexpr, NG: tl.constexpr, rs: tl.constexpr,
+    BR: tl.constexpr, BG: tl.constexpr
+):
+    pid_e = tl.program_id(0) # 0..7
+    pid_r = tl.program_id(1)
+    e_idx = tl.load(e_ids_ptr + pid_e).to(tl.int64)
+    rows = pid_r * BR + tl.arange(0, BR)
+    rmask = rows < OUT
+    gl = tl.arange(0, BG)
+    j = tl.arange(0, 8)
+    acc = tl.zeros([BR], dtype=tl.float32)
+    e_off = e_idx * OUT * NG
+    e_sc_off = e_idx * OUT
+    act_e_off = pid_e * (NG * 8)
+    for g0 in range(0, NG, BG):
+        g = g0 + gl
+        gmask = g < NG
+        # Carrega ativação do expert pid_e apenas UMA vez para todo o bloco! [BG, 8]
+        xv = tl.load(act_ptr + act_e_off + g[:, None] * 8 + j[None, :], mask=gmask[:, None], other=0.0).to(tl.float32)
+        
+        m2 = rmask[:, None] & gmask[None, :]
+        off = e_off + rows[:, None].to(tl.int64) * NG + g[None, :]
+        a0 = tl.load(i0_ptr + off, mask=m2, other=0).to(tl.int32) & 0xFFFF
+        v0 = tl.load(cb0_ptr + a0[:, :, None] * 8 + j[None, None, :]).to(tl.float32)
+        
+        acc += tl.sum(tl.sum(v0 * xv[None, :, :], axis=2), axis=1)
+        
+    sc = tl.load(sc_ptr + e_sc_off + rows, mask=rmask, other=0.0).to(tl.float32)
+    y_off = pid_e * OUT + rows
+    tl.store(y_ptr + y_off, (acc * sc * rs).to(tl.bfloat16), mask=rmask)
+
+y_down2 = torch.empty((8, 2048), device=DEVICE, dtype=torch.bfloat16)
+for BR in [32, 64]:
+    grid = (8, 2048 // BR)
+    _opt_down_v2[grid](
+        act_r, topk_ids, down_idx, cb16, down_scale, y_down2,
+        OUT=2048, NG=64, rs=1.0, BR=BR, BG=64, num_warps=4
+    )
+    torch.cuda.synchronize()
+    t0 = time.perf_counter()
+    for _ in range(N):
+        _opt_down_v2[grid](
+            act_r, topk_ids, down_idx, cb16, down_scale, y_down2,
+            OUT=2048, NG=64, rs=1.0, BR=BR, BG=64, num_warps=4
+        )
+    torch.cuda.synchronize()
+    dt_v2 = (time.perf_counter() - t0) / N * 1000
+    diff = (y_down - y_down2).abs().max().item()
+    print(f"Down V2 (BR={BR}): {dt_v2:.4f} ms ({dt_v2*1000:.1f} us) | Diff: {diff:.6f}")

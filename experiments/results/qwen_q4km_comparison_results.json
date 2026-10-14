@@ -1,0 +1,78 @@
+{
+  "gguf_file": "E:/agente/modelo\\Qwen3.5-2B-Q4_K_M.gguf",
+  "gguf_size_bytes": 1280835840,
+  "gguf_effective_bpw": 5.445,
+  "ram_used_by_model_mb": 4071.4453125,
+  "ppl_bf16": {
+    "Ciencia": 5.050857067108154,
+    "Codigo": 2.6484928131103516,
+    "Historia": 8.183316230773926,
+    "Enciclopedia": 3.700718402862549,
+    "Media": 4.895846128463745
+  },
+  "ppl_h5a": {
+    "Ciencia": 14.103915214538574,
+    "Codigo": 3.2152767181396484,
+    "Historia": 10.808964729309082,
+    "Enciclopedia": 7.489380836486816,
+    "Media": 8.90438437461853
+  },
+  "ppl_q4_k_m": {
+    "Ciencia": 5.581929683685303,
+    "Codigo": 2.681307554244995,
+    "Historia": 7.996373176574707,
+    "Enciclopedia": 3.8894872665405273,
+    "Media": 5.037274420261383
+  },
+  "gen_bf16": {
+    "Capital": {
+      "text": "The capital of France is Paris.\\nA. True\\nB. False\\n\\n<think>\\nThinking Process:",
+      "uniq": 0.76
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n <= 0:\\n      ",
+      "uniq": 0.696969696969697
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the net force acting on an object is e",
+      "uniq": 0.8928571428571429
+    }
+  },
+  "gen_h5a": {
+    "Capital": {
+      "text": "The capital of France is Paris, which is the capital of the country.\\nThe capita",
+      "uniq": 0.48
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6666666666666666
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the force acting on an object is equal",
+      "uniq": 0.7142857142857143
+    }
+  },
+  "gen_q4_k_m": {
+    "Capital": {
+      "text": "The capital of France is Paris.\\nA. True\\nB. False\\n\\n<think>\\nThinking Process:\\n\\n1. ",
+      "uniq": 0.76,
+      "time": 19.191036701202393,
+      "tokens": 20,
+      "tok_per_sec": 1.0421531838739553
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n <= 0:\\n        return 0\\n   ",
+      "uniq": 0.696969696969697,
+      "time": 19.634036540985107,
+      "tokens": 20,
+      "tok_per_sec": 1.0186392369317925
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the net force acting on an object is equal to the mas",
+      "uniq": 0.8571428571428571,
+      "time": 19.968528509140015,
+      "tokens": 20,
+      "tok_per_sec": 1.0015760545823684
+    }
+  }
+}

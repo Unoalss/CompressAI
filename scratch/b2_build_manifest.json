@@ -1,0 +1,43 @@
+{
+  "artifact": "Artefato B2 (Passagem 2)",
+  "file": "qwen35b_mixed_b2.vq2m",
+  "exact_bytes": 10108393952,
+  "delta_over_A_bytes": 6291456,
+  "promoted_experts_count": 16,
+  "promoted_experts": {
+    "39": [
+      133,
+      56,
+      24,
+      234,
+      204,
+      123
+    ],
+    "38": [
+      209,
+      67
+    ],
+    "37": [
+      186,
+      19
+    ],
+    "36": [
+      101
+    ],
+    "34": [
+      203
+    ],
+    "33": [
+      127
+    ],
+    "32": [
+      165
+    ],
+    "31": [
+      35,
+      162
+    ]
+  },
+  "sha256": "2ADB36E37F387842A521D2F3E07A29B77A7D9240997411372E0975586AEB8EAE",
+  "timestamp": "2026-10-13T14:32:35Z"
+}

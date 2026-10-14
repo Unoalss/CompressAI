@@ -1,0 +1,171 @@
+{
+  "metadata": {
+    "device": "NVIDIA GeForce RTX 3060",
+    "date": "2026-10-13 16:07:21",
+    "artifact": "qwen35b_mixed_b2.vq2m",
+    "size_bytes": 10108393952,
+    "sha256_before": "2adb36e37f387842a521d2f3e07a29b77a7d9240997411372e0975586aeb8eae",
+    "sha256_after": "2adb36e37f387842a521d2f3e07a29b77a7d9240997411372e0975586aeb8eae",
+    "sha256_intact": true
+  },
+  "resources": {
+    "vram_allocated_gb": 7.647421836853027,
+    "vram_reserved_gb": 8.984375,
+    "ram_rss_gb": 2.1520652770996094
+  },
+  "cold_cache": {
+    "tps": 5.755598338722045,
+    "ms_per_token": 173.74388224283854,
+    "hit_rate_pct": 76.78400118072467
+  },
+  "optimized_version": {
+    "n_samples": 150,
+    "percentiles_ms": {
+      "min": 112.99929809570312,
+      "p50_median": 119.1095199584961,
+      "mean": 121.70878458658854,
+      "p90": 130.82411193847656,
+      "p95": 134.60207138061523,
+      "p99": 157.36363906860345,
+      "max": 170.0854034423828
+    },
+    "throughput_tokens_per_sec": {
+      "peak_instant": 8.849612491867555,
+      "median_p50": 8.395634541625654,
+      "sustained_mean": 8.21633379543413
+    },
+    "batteries": [
+      {
+        "round": 1,
+        "version": "optimized",
+        "tps": 8.278378393809662,
+        "avg_ms": 120.79660441080729,
+        "p50_ms": 118.64003372192383,
+        "min_ms": 114.88758087158203,
+        "max_ms": 134.6090545654297,
+        "hit_rate": 98.22501553974722
+      },
+      {
+        "round": 2,
+        "version": "optimized",
+        "tps": 8.17751358579223,
+        "avg_ms": 122.2865592956543,
+        "p50_ms": 120.4524154663086,
+        "min_ms": 114.00665283203125,
+        "max_ms": 134.16680908203125,
+        "hit_rate": 98.34921950545656
+      },
+      {
+        "round": 3,
+        "version": "optimized",
+        "tps": 8.261781502315047,
+        "avg_ms": 121.0392697652181,
+        "p50_ms": 118.76919937133789,
+        "min_ms": 113.967041015625,
+        "max_ms": 154.18162536621094,
+        "hit_rate": 98.29360967184802
+      },
+      {
+        "round": 4,
+        "version": "optimized",
+        "tps": 8.338605717586606,
+        "avg_ms": 119.92412567138672,
+        "p50_ms": 118.03958511352539,
+        "min_ms": 114.06114959716797,
+        "max_ms": 160.42086791992188,
+        "hit_rate": 98.39066169360409
+      },
+      {
+        "round": 5,
+        "version": "optimized",
+        "tps": 8.032298592986887,
+        "avg_ms": 124.4973637898763,
+        "p50_ms": 120.58636856079102,
+        "min_ms": 112.99929809570312,
+        "max_ms": 170.0854034423828,
+        "hit_rate": 98.21120243110713
+      }
+    ]
+  },
+  "baseline_version": {
+    "n_samples": 150,
+    "percentiles_ms": {
+      "min": 147.64002990722656,
+      "p50_median": 156.83535766601562,
+      "mean": 159.13843282063803,
+      "p90": 169.4929962158203,
+      "p95": 175.71076812744138,
+      "p99": 195.8366935729979,
+      "max": 205.39158630371094
+    },
+    "throughput_tokens_per_sec": {
+      "peak_instant": 6.773230814355537,
+      "median_p50": 6.376113236720014,
+      "sustained_mean": 6.283837174185832
+    },
+    "batteries": [
+      {
+        "round": 1,
+        "version": "baseline",
+        "tps": 6.085262931360925,
+        "avg_ms": 164.33143666585286,
+        "p50_ms": 162.68799591064453,
+        "min_ms": 150.39190673828125,
+        "max_ms": 205.39158630371094,
+        "hit_rate": 97.31260794473229
+      },
+      {
+        "round": 2,
+        "version": "baseline",
+        "tps": 6.388371728565828,
+        "avg_ms": 156.53441009521484,
+        "p50_ms": 153.7269744873047,
+        "min_ms": 150.39181518554688,
+        "max_ms": 171.32269287109375,
+        "hit_rate": 98.31445150594087
+      },
+      {
+        "round": 3,
+        "version": "baseline",
+        "tps": 6.272869777909213,
+        "avg_ms": 159.4166681925456,
+        "p50_ms": 155.4635238647461,
+        "min_ms": 149.63507080078125,
+        "max_ms": 205.03245544433594,
+        "hit_rate": 98.04476993229238
+      },
+      {
+        "round": 4,
+        "version": "baseline",
+        "tps": 6.3529990160231815,
+        "avg_ms": 157.40597432454427,
+        "p50_ms": 155.7801742553711,
+        "min_ms": 148.48204040527344,
+        "max_ms": 176.5601348876953,
+        "hit_rate": 98.35589941972921
+      },
+      {
+        "round": 5,
+        "version": "baseline",
+        "tps": 6.328966722497835,
+        "avg_ms": 158.00367482503256,
+        "p50_ms": 154.81342315673828,
+        "min_ms": 147.64002990722656,
+        "max_ms": 184.3066864013672,
+        "hit_rate": 98.21083172147002
+      }
+    ]
+  },
+  "comparison_and_fidelity": {
+    "has_nan_or_inf": false,
+    "top1_agreement_pct": 100.0,
+    "mean_cosine_similarity": 0.9982527136802674,
+    "max_logit_abs_diff": 1.078125,
+    "opt_internal_deterministic": true,
+    "base_internal_deterministic": true,
+    "cross_version_text_identical": true,
+    "speedup_median_pct": 31.673234616901457,
+    "speedup_mean_pct": 30.753448373663222,
+    "sample_generated_text": " menos mem\u00f3ria.\nA Intelig\u00eancia Artificial Avan\u00e7ada permite arquiteturas neurais altamente eficientes com menos mem\u00f3ria.\nA Intelig\u00eancia Artificial Avan"
+  }
+}

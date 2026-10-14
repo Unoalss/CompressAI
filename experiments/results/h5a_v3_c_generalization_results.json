@@ -1,0 +1,115 @@
+{
+  "baseline": {
+    "train": {
+      "kl": 0.7496,
+      "top1": 68.01,
+      "top5": 91.82,
+      "cosine": 77.96
+    },
+    "holdout": {
+      "kl": 1.0264,
+      "top1": 57.74,
+      "top5": 84.18,
+      "cosine": 76.68
+    },
+    "ppl": {
+      "Ciencia": 12.29,
+      "Codigo": 3.35,
+      "Historia": 15.94,
+      "Enciclopedia": 7.16,
+      "Media": 9.69
+    }
+  },
+  "ranks": {
+    "8": {
+      "rank": 8,
+      "size_kb": 64.0,
+      "size_mb": 0.062,
+      "train_time_sec": 179.0,
+      "train_metrics": {
+        "kl": 0.1757,
+        "top1": 94.79,
+        "top5": 99.26,
+        "cosine": 76.29
+      },
+      "holdout_metrics": {
+        "kl": 1.1184,
+        "top1": 58.25,
+        "top5": 84.01,
+        "cosine": 75.41
+      },
+      "generalization_gap": {
+        "delta_kl": 0.9427,
+        "top1_retention_pct": 61.45
+      },
+      "ppl_media": 9.27,
+      "ppl": {
+        "Ciencia": 11.03,
+        "Codigo": 3.83,
+        "Historia": 15.5,
+        "Enciclopedia": 6.72,
+        "Media": 9.27
+      }
+    },
+    "16": {
+      "rank": 16,
+      "size_kb": 128.0,
+      "size_mb": 0.125,
+      "train_time_sec": 177.9,
+      "train_metrics": {
+        "kl": 0.1194,
+        "top1": 96.28,
+        "top5": 99.55,
+        "cosine": 77.05
+      },
+      "holdout_metrics": {
+        "kl": 1.1135,
+        "top1": 56.4,
+        "top5": 83.5,
+        "cosine": 75.64
+      },
+      "generalization_gap": {
+        "delta_kl": 0.9941,
+        "top1_retention_pct": 58.58
+      },
+      "ppl_media": 9.36,
+      "ppl": {
+        "Ciencia": 11.38,
+        "Codigo": 3.46,
+        "Historia": 15.43,
+        "Enciclopedia": 7.16,
+        "Media": 9.36
+      }
+    },
+    "32": {
+      "rank": 32,
+      "size_kb": 256.0,
+      "size_mb": 0.25,
+      "train_time_sec": 180.0,
+      "train_metrics": {
+        "kl": 0.1481,
+        "top1": 95.39,
+        "top5": 99.26,
+        "cosine": 77.33
+      },
+      "holdout_metrics": {
+        "kl": 1.0855,
+        "top1": 58.08,
+        "top5": 84.18,
+        "cosine": 75.92
+      },
+      "generalization_gap": {
+        "delta_kl": 0.9374,
+        "top1_retention_pct": 60.89
+      },
+      "ppl_media": 9.88,
+      "ppl": {
+        "Ciencia": 12.17,
+        "Codigo": 3.51,
+        "Historia": 16.52,
+        "Enciclopedia": 7.31,
+        "Media": 9.88
+      }
+    }
+  }
+}

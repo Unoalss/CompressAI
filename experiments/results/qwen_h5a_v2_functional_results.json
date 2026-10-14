@@ -1,0 +1,29 @@
+{
+  "size_mb": 845.9718980789185,
+  "size_bytes": 887065829,
+  "ppl": {
+    "Ciencia": 32.02095031738281,
+    "Codigo": 3.64216685295105,
+    "Historia": 17.848758697509766,
+    "Enciclopedia": 9.209638595581055,
+    "Media": 15.68037861585617
+  },
+  "gen": {
+    "Capital": {
+      "text": "The capital of France is the capital of the world.\\n\\nThe capital of the world i",
+      "uniq": 0.36,
+      "tok_per_sec": 0.7786303983622694
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6363636363636364,
+      "tok_per_sec": 0.7696573305074852
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the total energy of a system is equal ",
+      "uniq": 0.6785714285714286,
+      "tok_per_sec": 0.7582016002317319
+    }
+  },
+  "time_quant": 473.38172602653503
+}

@@ -1,0 +1,21 @@
+{
+  "prompt": "Como a teoria da relatividade geral de Einstein explica a deformação do espaço-tempo pela presença de massa e energia?",
+  "tokens_in": 72,
+  "tokens_out": 176,
+  "total_tokens": 248,
+  "total_dispatches": 79360,
+  "active_per_token": 320,
+  "unique_experts_mobilized": 6418,
+  "total_model_experts": 10240,
+  "cache_hits": 70587,
+  "cache_misses": 8773,
+  "hit_rate_pct": 88.95,
+  "bytes_read_storage_mb": 6631.15,
+  "bytes_saved_cache_mb": 53353.85,
+  "peak_ram_rss_mb": 2043.4,
+  "peak_vram_mb": 7674.2,
+  "peak_vram_gb": 7.49,
+  "total_time_s": 38.04,
+  "tokens_per_sec": 4.63,
+  "response_text": "A Teoria Geral da Relatividade (1915) propõe que **a gravidade não é uma força** que atua sobre os corpos — como na visão newtoniana — mas sim **uma geometria do espaçompo**. No entanto, quando existe matéria/energia no sistema, essa geometria se “deforma” à medida que surge curvatura nos campos do espaçompo-tipo-e-de-fato. Essa ideia aparece com grande poder explicativo: por exemplo, o campo-g-gravitacional dos planetes-nort-saléss-pssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+}

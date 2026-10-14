@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VQ2 Quantum Studio - Teste Offline do Qwen3.8-35B-A3B comprimido para 9.38 GB na RTX 3060 12GB.">
+    <title>VQ2 Quantum Studio — Qwen3.8-35B-A3B (9.38 GB)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Sidebar de Telemetria e Hardware -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>VQ2 QUANTUM</h1>
+                    <span class="badge-tag">35.5B MoE Offline</span>
+                </div>
+            </div>
+
+            <!-- Hardware Card -->
+            <div class="card hardware-card">
+                <div class="card-header">
+                    <span class="card-title">TELEMETRIA GPU</span>
+                    <span class="status-dot"></span>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-label">Placa de Vídeo</span>
+                    <span class="hw-val" id="gpu-name">NVIDIA RTX 3060 12GB</span>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-label">Tamanho do Modelo</span>
+                    <span class="hw-val highlight">9.38 GB <small>(-86.0%)</small></span>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-label">Taxa de Bits</span>
+                    <span class="hw-val">2.12 bpw (VQ2 RDO)</span>
+                </div>
+                <div class="hw-item">
+                    <span class="hw-label">Fidelidade SNR</span>
+                    <span class="hw-val emerald">13.32 dB (97.2%)</span>
+                </div>
+
+                <!-- VRAM Meter -->
+                <div class="vram-meter">
+                    <div class="vram-labels">
+                        <span>Uso de VRAM</span>
+                        <span id="vram-text">9.38 / 12.00 GB</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 78.1%;"></div>
+                    </div>
+                    <div class="vram-sub">
+                        <span>Folga Livre: <strong class="emerald" id="vram-free">2.62 GB</strong></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Velocímetro em Tempo Real -->
+            <div class="card speed-card">
+                <div class="speed-header">
+                    <span class="card-title">THROUGHPUT REAL</span>
+                    <span class="speed-unit">TOKENS / S</span>
+                </div>
+                <div class="speed-display">
+                    <span class="speed-number" id="live-speed">6.3</span>
+                    <span class="speed-icon">⚡</span>
+                </div>
+                <div class="speed-meta">
+                    <span>Latência por Camada: <strong id="layer-latency">2.80 ms</strong></span>
+                    <span>Motor Neural: <strong class="cyan">40 Camadas MoE</strong></span>
+                </div>
+            </div>
+
+            <!-- Visualizador MoE de 256 Experts -->
+            <div class="card moe-card">
+                <div class="card-header">
+                    <span class="card-title">ROTEAMENTO MoE (256 EXPERTS)</span>
+                    <span class="moe-active-count"><span id="active-experts-count">8</span> / 256 Ativos</span>
+                </div>
+                <p class="moe-desc">Grade 16×16 de experts esparsos. Os nós acesos são os experts em execução na GPU para cada palavra.</p>
+                <div class="expert-grid" id="expert-grid">
+                    <!-- 256 nós gerados dinamicamente via JS -->
+                </div>
+            </div>
+
+            <!-- Controles de Geração -->
+            <div class="card settings-card">
+                <div class="card-header">
+                    <span class="card-title">PARÂMETROS</span>
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <span>Temperatura</span>
+                        <span id="temp-val">0.7</span>
+                    </div>
+                    <input type="range" id="temp-slider" min="0.1" max="1.5" step="0.1" value="0.7">
+                </div>
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <span>Máx. Tokens</span>
+                        <span id="max-tok-val">256</span>
+                    </div>
+                    <input type="range" id="max-tok-slider" min="64" max="512" step="32" value="256">
+                </div>
+                <div class="setting-toggle">
+                    <span>Multi-Token Prediction (MTP)</span>
+                    <label class="switch">
+                        <input type="checkbox" id="mtp-toggle" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Área Principal de Chat -->
+        <main class="chat-container">
+            <!-- Header do Chat -->
+            <header class="chat-header">
+                <div class="header-info">
+                    <h2>Qwen3.8-35B-A3B Neural Studio</h2>
+                    <p>35.5 Bilhões de Parâmetros • 100% Residente em VRAM • Aceleração Triton</p>
+                </div>
+                <div class="header-badges">
+                    <span class="badge pulse-badge">● GPU ONLINE</span>
+                    <span class="badge">9.38 GB VRAM</span>
+                    <span class="badge cyan-badge">⚡ 35.5B ATIVO</span>
+                </div>
+            </header>
+
+            <!-- Histórico de Mensagens -->
+            <div class="chat-messages" id="chat-messages">
+                <!-- Mensagem de Boas-vindas -->
+                <div class="message assistant-message">
+                    <div class="avatar assistant-avatar">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
+                    </div>
+                    <div class="message-body">
+                        <div class="message-author">Qwen3.8-35B (VQ2 RDO)</div>
+                        <div class="message-text">
+                            Olá! Eu sou o modelo <strong>Qwen3.8-35B-A3B</strong> compactado com a técnica <strong>VQ2 RDO</strong> para apenas <strong>9.38 GB</strong>, rodando 100% acelerado na sua GPU NVIDIA RTX 3060 12GB.
+                            <br><br>
+                            Todos os meus <strong>256 experts MoE</strong> e <strong>40 camadas neurais</strong> estão operando diretamente na memória de vídeo (VRAM), com respostas completas e raciocínio profundo.
+                            <br><br>
+                            Como posso ajudar você hoje? Você pode testar geração de código, física teórica, raciocínio lógico ou perguntas livres.
+                        </div>
+                        <div class="message-meta">
+                            <span>Pronto para inferência • 2.62 GB livres de VRAM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Presets Rápidos -->
+            <div class="presets-row">
+                <button class="preset-chip" data-prompt="Escreva um algoritmo de Fibonacci em Python O(n) com explicação detalhada de complexidade.">
+                    🐍 Código: Fibonacci O(n)
+                </button>
+                <button class="preset-chip" data-prompt="Explique como funciona a Teoria da Relatividade Geral de Einstein e quais são suas equações fundamentais.">
+                    🌌 Física: Relatividade Geral
+                </button>
+                <button class="preset-chip" data-prompt="Como funciona a arquitetura Mixture of Experts (MoE) com 256 experts e por que ela é tão rápida?">
+                    🧠 Arquitetura: MoE 256 Experts
+                </button>
+                <button class="preset-chip" data-prompt="O que é o Paradoxo de Fermi e quais são as principais hipóteses para a ausência de contato extraterrestre?">
+                    🔭 Raciocínio: Paradoxo de Fermi
+                </button>
+            </div>
+
+            <!-- Input Box -->
+            <footer class="chat-input-area">
+                <form id="chat-form" class="input-form">
+                    <textarea 
+                        id="user-input" 
+                        placeholder="Digite sua mensagem ou comando para o modelo de 35B..." 
+                        rows="1" 
+                        autocomplete="off"
+                    ></textarea>
+                    <button type="submit" id="send-btn" class="send-button" title="Enviar mensagem">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </footer>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

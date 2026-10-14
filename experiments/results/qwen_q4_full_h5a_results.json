@@ -1,0 +1,85 @@
+{
+  "size_q4_original_mb": 1221.500244140625,
+  "size_etapa1_mb": 871.903148651123,
+  "size_etapa2_mb": 853.528148651123,
+  "size_etapa3_mb": 774.778148651123,
+  "size_etapa4_mb": 686.871898651123,
+  "ppl_96": {
+    "Ciencia": 19.13554573059082,
+    "Codigo": 4.182363510131836,
+    "Historia": 16.37059783935547,
+    "Enciclopedia": 6.532080173492432,
+    "Media": 11.55514681339264
+  },
+  "gen_96": {
+    "Capital": {
+      "text": "The capital of France is Paris.\\nA. Paris is the capital of France.\\nB. Paris is",
+      "uniq": 0.44,
+      "tok_per_sec": 0.8082292897849178
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6666666666666666,
+      "tok_per_sec": 0.7977666359543701
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the net force acting on an object is e",
+      "uniq": 0.8571428571428571,
+      "tok_per_sec": 0.751163693255758
+    }
+  },
+  "ppl_150": {
+    "Ciencia": 55.82094192504883,
+    "Codigo": 6.593147277832031,
+    "Historia": 32.32221221923828,
+    "Enciclopedia": 19.906835556030273,
+    "Media": 28.660784244537354
+  },
+  "gen_150": {
+    "Capital": {
+      "text": "The capital of France is a small town.\\nThe capital of France is a small town.\\n",
+      "uniq": 0.4,
+      "tok_per_sec": 0.8010918889413775
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    # n is the number ",
+      "uniq": 0.5151515151515151,
+      "tok_per_sec": 0.7933033856846617
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that if a force is not balanced, the object",
+      "uniq": 0.8214285714285714,
+      "tok_per_sec": 0.7985803359808935
+    }
+  },
+  "ppl_total": {
+    "Ciencia": 80.00259399414062,
+    "Codigo": 7.6104416847229,
+    "Historia": 45.967384338378906,
+    "Enciclopedia": 28.413597106933594,
+    "Media": 40.498504281044006
+  },
+  "gen_total": {
+    "Capital": {
+      "text": "The capital of France is a country of France. It is a country of France. It is a",
+      "uniq": 0.36,
+      "tok_per_sec": 0.8023507594194967
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    # n is a list of i",
+      "uniq": 0.5757575757575758,
+      "tok_per_sec": 0.788020476901955
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that a force of a finite mass is not a forc",
+      "uniq": 0.7142857142857143,
+      "tok_per_sec": 0.749882160018636
+    }
+  },
+  "times": {
+    "ffn": 132.01021146774292,
+    "attn": 27.019849061965942,
+    "dnet": 77.68176031112671,
+    "emb": 49.983126401901245
+  }
+}

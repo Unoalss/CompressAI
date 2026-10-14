@@ -1,0 +1,97 @@
+# ==============================================================================
+# VQ2 & LEGION AI - .gitignore
+# ==============================================================================
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.dll
+
+# Distribution / packaging
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Large Model Weights and Checkpoints (NEVER COMMIT TO GIT)
+modelo/
+modelo_35b/
+vq2_out/
+vq2_35b_out/
+VQ2_MARCO_FINAL/*.vq2
+VQ2_MARCO_FINAL/*.vq2m
+VQ2_MARCO_FINAL/*.vq2r
+*.vq2
+*.vq2m
+*.vq2r
+*.safetensors
+*.gguf
+*.bin
+*.pth
+*.pt
+*.rar
+*.zip
+*.tar.gz
+*.7z
+
+# Datasets and Large Data Caches
+data/*.parquet
+data/*.pt
+data/*.bin
+
+# Scratch Directory Large Binaries and Caches
+scratch/*.pt
+scratch/*.vq2m
+scratch/*.vq2r
+scratch/*.vq2
+scratch/*.bin
+scratch/*.safetensors
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# OS Generated Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Testing & Type Checking
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Logs and Telemetry
+*.log
+wandb/

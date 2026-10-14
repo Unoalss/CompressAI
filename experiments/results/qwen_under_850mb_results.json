@@ -1,0 +1,31 @@
+{
+  "size_mb": 835.5,
+  "size_bytes": 876145216,
+  "ppl": {
+    "Ciencia": 22.26,
+    "Codigo": 3.90,
+    "Historia": 14.23,
+    "Enciclopedia": 10.80,
+    "Media": 12.80
+  },
+  "gen": {
+    "Capital": {
+      "text": "The capital of France is Paris, France.\\n\\nThe capital of France is Paris, Franc",
+      "tok_per_sec": 0.80
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "tok_per_sec": 0.79
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the force of friction is equal to the ",
+      "tok_per_sec": 0.80
+    }
+  },
+  "times": {
+    "ffn": 129.1,
+    "attn": 26.4,
+    "dnet": 83.2,
+    "emb": 44.6
+  }
+}

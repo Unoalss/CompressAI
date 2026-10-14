@@ -1,0 +1,58 @@
+{
+  "size_mb": 832.8183975219727,
+  "size_bytes": 873273384,
+  "ppl_backbone": {
+    "Ciencia": 24.6275634765625,
+    "Codigo": 6.381417751312256,
+    "Historia": 21.02401351928711,
+    "Enciclopedia": 11.335203170776367,
+    "Media": 15.842049479484558
+  },
+  "gen_backbone": {
+    "Capital": {
+      "text": "The capital of France is Paris.\\n   -\\n   -\\n   -\\n   -\\n   -\\n   -",
+      "uniq": 0.4,
+      "tok_per_sec": 0.7785720065976318
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6363636363636364,
+      "tok_per_sec": 0.7215412766184964
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that an object's motion is determined by th",
+      "uniq": 0.7857142857142857,
+      "tok_per_sec": 0.7766036104932689
+    }
+  },
+  "ppl_850mb": {
+    "Ciencia": 25.368762969970703,
+    "Codigo": 6.362248420715332,
+    "Historia": 20.659048080444336,
+    "Enciclopedia": 11.466771125793457,
+    "Media": 15.964207649230957
+  },
+  "gen_850mb": {
+    "Capital": {
+      "text": "The capital of France is Paris.\\n   -\\n   -\\n   -\\n   -\\n   -\\n   -",
+      "uniq": 0.4,
+      "tok_per_sec": 0.715766406921509
+    },
+    "Fibonacci": {
+      "text": "def fibonacci(n):\\n    \"\"\"Return nth Fibonacci number\"\"\"\\n    if n == 0:\\n      ",
+      "uniq": 0.6363636363636364,
+      "tok_per_sec": 0.6289989111639275
+    },
+    "Newton": {
+      "text": "Newton's second law of motion states that the acceleration of a body is directly",
+      "uniq": 0.7857142857142857,
+      "tok_per_sec": 0.6058396295078183
+    }
+  },
+  "times": {
+    "ffn": 132.05341243743896,
+    "attn": 27.712976932525635,
+    "dnet": 79.80567693710327,
+    "emb": 46.52224111557007
+  }
+}
