@@ -113,7 +113,7 @@ flowchart TD
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/compressAI.git
+git clone https://github.com/Unoalss/CompressAI.git
 cd compressAI
 
 # Create virtual environment
@@ -297,7 +297,7 @@ If you find VQ2 or LEGION AI useful in your research or production, please cite:
   author = {Antigravity AI and VQ2 Contributors},
   title = {VQ2 & LEGION AI: Extreme Vector Quantization & Paged MoE Streaming Engine for Large Language Models},
   year = {2026},
-  url = {https://github.com/your-username/compressAI}
+  url = {https://github.com/Unoalss/CompressAI}
 }
 ```
 

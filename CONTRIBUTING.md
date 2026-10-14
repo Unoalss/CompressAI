@@ -45,7 +45,7 @@ If you're wondering where to start, here are our highest-priority tasks:
 
 1. **Fork and clone**:
    ```bash
-   git clone https://github.com/<your-username>/compressAI.git
+   git clone https://github.com/Unoalss/CompressAI.git
    cd compressAI
    ```
 
