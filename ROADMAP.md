@@ -19,22 +19,26 @@ This roadmap outlines the milestones, planned features, and research directions 
 
 ---
 
-## 🚀 Phase 2: Ecosystem & Cross-Platform Acceleration (In Progress 🔄)
+## 🚀 Phase 2: LEGION CPU-First & Ecosystem Acceleration (In Progress 🔄)
 
+> 📖 **Full Specification**: Refer to [`docs/GUIA_PESQUISA_CPU_FIRST.md`](docs/GUIA_PESQUISA_CPU_FIRST.md) for the complete engineering spec.
+
+- [ ] **LEGION CPU-First Core (Top Priority 🔥)**:
+  - [ ] **`CPU-01`**: Projeções VQ2 sem materialização permanente (eliminar reconstrução em RAM das 328 matrizes densas; implementar `quant_linear` CPU com buffers finitos).
+  - [ ] **`CPU-02`**: Kernels SIMD Nativos (referência escalar C++ -> vetorização AVX2 em x86_64 -> porte para ARM NEON em ARM64).
+  - [ ] **`CPU-03`**: Orçamento Adaptativo de Memória Global (teto estrito de RAM do processo cobrindo cache MoE, buffers de projeção e KV-cache).
+  - [ ] **`CPU-04`**: Benchmark Rigoroso e Reproduzível (carga fria, geração aquecida, pico RSS, TTFT, P95 e divergência KL sob a mesma suite).
+- [ ] **Mobile & Edge Runtime**:
+  - [ ] **`MOBILE-01`**: Portabilidade Android (execução ARM64 nativa, leitura via mmap de UFS, mitigação térmica e contenção de memória para 4–8 GB de RAM).
 - [ ] **`llama.cpp` Integration**:
   - [ ] Implement `GGML_TYPE_VQ8_16` / `GGML_TYPE_VQ8_16_8` tensor types in GGML.
   - [ ] Support loading `.vq2` and `.vq2m` directly inside `llama.cpp` CLI and web UI.
-  - [ ] CPU SIMD vector lookup with AVX-512, AVX2, and ARM NEON.
 - [ ] **Apple Silicon (MPS / MLX)**:
   - [ ] Native Metal Shading Language (MSL) decompression kernel.
   - [ ] Apple MLX integration for unified memory execution on M1/M2/M3/M4 chips.
-- [ ] **Kernel Autotuning & Architecture Portability**:
-  - [ ] Triton autotuning configs for NVIDIA Ampere, Ada Lovelace, Hopper, and Blackwell.
-  - [ ] AMD ROCm / HIP compatibility verification.
 - [ ] **Developer Tooling & Packaging**:
-  - [ ] GitHub Actions CI workflow (linting, tests, wheel builds).
+  - [ ] GitHub Actions CI workflow (linting, tests, CPU-only wheel builds).
   - [ ] PyPI package publication (`pip install vq2`).
-  - [ ] Hugging Face model hub downloader and exporter.
 
 ---
 

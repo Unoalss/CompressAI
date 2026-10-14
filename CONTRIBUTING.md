@@ -7,9 +7,19 @@ We are building the future of open-source extreme vector quantization and memory
 
 ## 🎯 Priority Areas (Where We Need Your Help)
 
-If you're wondering where to start, here are our highest-priority tasks:
+If you're wondering where to start, here are our highest-priority tasks (see detailed spec in [`docs/GUIA_PESQUISA_CPU_FIRST.md`](docs/GUIA_PESQUISA_CPU_FIRST.md)):
 
-### 1. ⚙️ `llama.cpp` / GGML Native VQ Integration
+### 1. 🔥 CPU-01: Projeções Densas sem Materialização Permanente na RAM
+* **Goal**: Eliminate the permanent RAM reconstruction of the **328 dense projection matrices** in the CPU runtime. Implement `quant_linear` for CPU directly over the compressed indices with small per-thread transient buffers.
+* **Why it matters**: This is the primary bottleneck preventing the 35B model from executing within a 4–8 GB RAM budget on basic PCs and mobile phones.
+* **Skills needed**: Python, PyTorch C++ extension, low-memory runtime design.
+
+### 2. ⚡ CPU-02: Kernels SIMD Nativos (AVX2 & ARM NEON)
+* **Goal**: Write vector-quantized GEMV kernels in C++ using AVX2 (x86_64) and ARM NEON (ARM64) with a scalar reference implementation for strict bit-exact verification.
+* **Why it matters**: Replaces slow Python loops with high-throughput native vector operations on PCs and Android/Snapdragon devices.
+* **Skills needed**: C++, SIMD (AVX2, NEON), numerical computing.
+
+### 3. ⚙️ `llama.cpp` / GGML Native VQ Integration
 * **Goal**: Implement a custom GGML tensor type (e.g. `GGML_TYPE_VQ8_16`) supporting 8-D vector decompression.
 * **Why it matters**: Allows `.vq2` and `.vq2m` models to run out-of-the-box on CPU, macOS Metal (MPS), and Android/iOS via `llama.cpp`.
 * **Skills needed**: C++, SIMD (AVX-512 / ARM NEON), GGML internals.

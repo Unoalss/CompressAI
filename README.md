@@ -70,7 +70,22 @@ All evaluations conducted under identical conditions on an **NVIDIA GeForce RTX 
 | **Expert Fidelity (SNR)** | $\infty$ | ~11.5 dB | ~10.8 dB | **13.32 dB** | **13.32 dB** |
 | **Cosine Similarity** | 1.0000 | 0.9610 | 0.9520 | **0.9725** | **0.9725** |
 | **Generation Speed** | 0 tok/s | ~15 tok/s (hybrid) | 0 tok/s | **61.1 tok/s (MTP 2-Tok)** | **9.0 – 9.5 tok/s (Streamed)** |
-| **Target Hardware** | $20,000+ GPU | 24GB RTX 4090 | 24GB RTX 4090 | **12GB RTX 3060** | **4GB–8GB PC / USB Drive** |
+| **Hardware Validado** | $20,000+ GPU | 24GB RTX 4090 | 24GB RTX 4090 | **12GB RTX 3060** | **12GB RTX 3060** *(Meta CPU: 4–8 GB PC)* |
+
+> **Nota de Rigor Metodológico**:  
+> As velocidades e consumos de VRAM/RAM acima foram mensurados em uma GPU NVIDIA RTX 3060 12GB com kernel Triton. A execução autônoma em PCs de 4–8 GB sem GPU dedicada depende da eliminação da materialização das 328 matrizes densas no backend CPU (ver [Marco LEGION CPU-First](#-próximo-marco-central-legion-cpu-first--guia-para-pesquisadores)).
+
+---
+
+### Tabela Formal de Auditoria dos Artefatos MoE 35B
+
+Para evitar ambiguidade entre GiB binário ($1024^3$) e GB decimal ($1000^3$):
+
+| Artefato | Arquivo Binário | Tamanho em Bytes | Tamanho GiB | Tamanho GB | SHA-256 | Configuração e Estado |
+| :--- | :--- | :---: | :---: | :---: | :--- | :--- |
+| **Artefato A** | `qwen35b_full.vq2m` | `10.102.102.496` B | 9,408 GiB | 10,10 GB | Verificado | Baseline 100% 2.0 bpw nos 10.240 experts. |
+| **Artefato B1** | `qwen35b_mixed_b.vq2m` | `10.104.461.792` B | 9,411 GiB | 10,10 GB | Verificado | Iteração intermediária (10 experts promovidos). |
+| **🏆 Artefato B2** | `qwen35b_mixed_b2.vq2m` | `10.108.393.952` B | 9,414 GiB | 10,11 GB | `2ADB36E37F387842A521D2F3E07A29B77A7D9240997411372E0975586AEB8EAE` | **Candidato Produção Oficial**: 16 experts âncora (L31–L39), KL = 0,0176 (-75,4%). |
 
 ---
 
@@ -81,6 +96,26 @@ By profiling Hessian sensitivity across terminal layers (L31–L39), we identifi
 * **Disk overhead**: only **+6.29 MB** (+0.06% size delta over Baseline A).
 * **Top-1 token agreement**: **90.6%** across a broad 32-domain benchmark suite.
 * See full technical report in [`docs/RELATORIO_MARCO_B2_PRODUCAO.md`](docs/RELATORIO_MARCO_B2_PRODUCAO.md).
+
+---
+
+## 🧭 Próximo Marco Central: LEGION CPU-First & Guia para Pesquisadores
+
+> 📖 **Guia Completo de Especificação**: Veja [`docs/GUIA_PESQUISA_CPU_FIRST.md`](docs/GUIA_PESQUISA_CPU_FIRST.md) para o documento técnico detalhado de direcionamento para a comunidade.
+
+O desafio central para que o LEGION funcione em PCs básicos e celulares Android sem GPU dedicada é resolver o **gargalo das 328 matrizes densas**: hoje, ao rodar em CPU, essas matrizes são materializadas em BF16 na RAM, consumindo gigabytes desnecessários.
+
+### Frentes de Trabalho Imediatas (Ordem de Prioridade):
+1. **`CPU-01` — Projeções VQ2 sem Materialização Permanente (Prioridade Máxima)**:
+   - Identificar as 328 matrizes densas e implementar `quant_linear` para CPU diretamente sobre a representação compactada com buffers temporários limitados por thread.
+2. **`CPU-02` — Kernels SIMD Nativos (AVX2 & ARM NEON)**:
+   - Implementar referência escalar C++ para garantia de correção numérica, seguida de vetorização AVX2 (x86_64) e posterior port para ARM NEON (Snapdragon / Android / Apple Silicon).
+3. **`CPU-03` — Orçamento Adaptativo de Memória Global**:
+   - Limitar rigidamente não apenas o cache MoE, mas buffers de projeção, matrizes intermediárias e memória de contexto.
+4. **`CPU-04` — Benchmark Rigoroso e Reproduzível**:
+   - Registrar carga fria, geração aquecida, RSS de pico, tokens/s, latência P95 e divergência KL sob a mesma sequência de entrada.
+5. **`MOBILE-01` — Portabilidade Android**:
+   - Mapeamento UFS via `mmap`, execução contida em 4–8 GB de RAM total, controle térmico e prevenção de encerramento por OOM.
 
 ---
 
