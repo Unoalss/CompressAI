@@ -13,6 +13,7 @@ This roadmap outlines the milestones, planned features, and research directions 
 - [x] **ANS Entropy Packaging**: Sub-byte entropy packaging producing `.vq2` and `.vq2r` containers.
 - [x] **Qwen3.5-2B Milestone**: 567 MB container beating GGUF Q4_K_M by 53.5% with preserved reasoning.
 - [x] **MoE Paged Streaming Engine (`.vq2m`)**: Sub-1.25GB VRAM execution of Qwen3.8-35B-A3B (10,240 experts) with LRU caching.
+- [x] **Milestone B2 Production Candidate (`qwen35b_mixed_b2.vq2m`)**: Selective promotion of 16 critical anchor experts (L31–L39), dropping KL divergence by 75.4% (to 0.0176) with 0.9974 cosine similarity.
 - [x] **Fused Triton 2D-Grid GEMV**: Parallel expert dispatch executing 8 active experts in parallel.
 - [x] **Compatible Server APIs**: Built-in HTTP server supporting OpenAI, Ollama, and llama.cpp endpoints.
 

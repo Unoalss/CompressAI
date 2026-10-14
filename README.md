@@ -74,6 +74,16 @@ All evaluations conducted under identical conditions on an **NVIDIA GeForce RTX 
 
 ---
 
+### Milestone B2: Production Candidate (`qwen35b_mixed_b2.vq2m`)
+By profiling Hessian sensitivity across terminal layers (L31–L39), we identified that **16 critical anchor experts** out of 10,240 dictate semantic stability. Promoting these 16 experts to high precision achieved:
+* **75.4% reduction in KL divergence** vs Baseline A (from 0.0716 down to **0.0176**).
+* **0.9974 cosine similarity** against original uncompressed BF16 logits.
+* **Disk overhead**: only **+6.29 MB** (+0.06% size delta over Baseline A).
+* **Top-1 token agreement**: **90.6%** across a broad 32-domain benchmark suite.
+* See full technical report in [`docs/RELATORIO_MARCO_B2_PRODUCAO.md`](docs/RELATORIO_MARCO_B2_PRODUCAO.md).
+
+---
+
 ## 🧠 Architectural Overview
 
 ```mermaid
@@ -199,6 +209,9 @@ Este projeto alcançou dois recordes empíricos em compressão vetorial de LLMs:
 2. **Execução MoE de 35.5 Bilhões de Parâmetros na RTX 3060 12GB**:
    - **Modo Residente VQ2**: Modelo completo reside nos 12GB de VRAM ocupando **9,38 GB**, operando a **61,1 tokens/s** com Multi-Token Prediction (MTP).
    - **Modo LEGION Streaming Paginado (`.vq2m`)**: Leitura via `mmap` e cache LRU dos 10.240 especialistas, permitindo rodar o modelo de 35B consumindo **menos de 1,25 GB de VRAM ativa e 3,0 GB de RAM** a **~9,5 tokens/segundo** a partir de SSD ou Pendrive USB!
+3. **🏆 Marco B2 - Candidato a Produção (`qwen35b_mixed_b2.vq2m`)**:
+   - Proteção de 16 especialistas âncora nas camadas 31 a 39.
+   - **Redução de 75,4% na Divergência KL** e **0,9974 de similaridade cosseno** com o modelo original denso BF16, adicionando apenas **+6,29 MB** ao contêiner.
 
 Documentação detalhada e relatórios técnicos disponíveis na pasta [`docs/`](docs/).
 
