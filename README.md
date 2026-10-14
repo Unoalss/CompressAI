@@ -48,6 +48,25 @@
 
 ---
 
+### 📥 Download dos Modelos Oficiais (Hugging Face Hub)
+
+Os contêineres e dicionários compilados estão hospedados publicamente no Hugging Face:  
+🔗 **[https://huggingface.co/ArthurLss/CompressAI](https://huggingface.co/ArthurLss/CompressAI)**
+
+Para baixar diretamente via terminal:
+```bash
+# 1. Baixar o Modelo MoE 35B Artefato B2 (10 GB)
+huggingface-cli download ArthurLss/CompressAI qwen35b_mixed_b2.vq2m --local-dir vq2_35b_out
+
+# 2. Baixar o Modelo 2B RDO Ultracompacto (567 MB)
+huggingface-cli download ArthurLss/CompressAI qwen3.5_2b_vq2_560mb.vq2r --local-dir VQ2_MARCO_FINAL
+
+# 3. Baixar os Codebooks Universais (4.2 MB)
+huggingface-cli download ArthurLss/CompressAI codebooks.pt --local-dir vq2_out
+```
+
+---
+
 <a name="english-overview"></a>
 ## 🚀 What is VQ2?
 
